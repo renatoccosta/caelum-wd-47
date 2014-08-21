@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title>Mirror Fashion</title>
+    <meta charset="utf-8" />
+    <link href="../css/reset.css" rel="stylesheet"/>
+    <link href="../css/estilos.css" rel="stylesheet"/>
+    <link href="../css/carrinho.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+    <header class="container">
+      <h1>Mirror Fashion</h1>
+
+      <p class="sacola">
+        Você tem 0 produto(s) na sacola
+      </p>
+
+      <nav class="menu-setores">
+        <ul>
+          <li><a href="#">Sua Conta</a></li>
+          <li><a href="#">Lista de Desejos</a></li>
+          <li><a href="#">Cartão Fidelidade</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="#">Ajuda</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="principal" class="container">
+
+			<div class="aviso">
+				<ul>
+ 					<li>Todas as bolsas nacionais com 30% de desconto</li>
+					<li>Casacos importados com 15% de desconto</li>
+					<li>Cintos com 10% de desconto</li>
+				</ul>				
+			</div>
+
+      <ul id="carrinho" ng-controller="ProdutoController">
+
+        <li id="item{{produto.id}}" class="clearfix" ng-repeat="produto in produtos">
+          <a href="../produto{{produto.id}}.html">  
+           <img alt="Produto 1" ng-src="../{{produto.imagem}}" />        
+						<h3>{{produto.nome}}</h3>
+					</a>          
+					<div class="item_info">
+            <small>Código: <strong>{{produto.codigo}}</strong></small>
+            <p>Valor unitário: R$ {{produto.preco}}</p>
+          </div>
+          <form action="/" method="post">
+            <p>
+              <label for="item{{produto.id}}_quantidade">Quantidade:</label>
+              <input id="item{{produto.id}}_quantidade" type="text" value="1" maxlength="2" ng-model="produto.quantidade"/>
+              <a href="#">Excluir</a>
+            </p>
+          </form>
+          <p>Valor total: <span id="item{{produto.id}}_valor_total">{{formatador.numberParaReal(produto.preco * produto.quantidade)}}</span></p>
+        </li>
+
+      </ul>
+      
+      <div id="recomendacoes" class="container" ng-controller="RecomendacaoController">        
+        <h3>Veja o que outras pessoas já compraram na Mirror Fashion</h3>
+        <ul>
+            <li ng-repeat="produto in produtos">
+                <img ng-src="../{{produto.imagem}}" />
+                <p>{{produto.nome}}</p>
+                <p>R$ {{produto.preco}}</p>
+            </li>
+        </ul>
+      </div>  
+
+      <div id="consulta_frete" class="clearfix">
+        <h3>Consulta frete:</h3>
+        <form id="consulta_cep">
+          <label for="input_cep">Seu cep: </label>
+          <input id="input_cep" type="text" />
+          <input type="submit" value="Consultar" />
+        </form>
+        <p class="resultado_cep"></p>
+      </div>
+    </div><!-- fim do conteudo principal -->
+
+     <footer>
+      <div class="container">
+        <h1>Mirror Fashion</h1>
+
+        <ul class="social">
+          <li><a href="http://facebook.com/mirrorfashion">Facebook</a></li>
+          <li><a href="http://twitter.com/mirrorfashion">Twitter</a></li>
+          <li><a href="http://plus.google.com/mirrorfashion">Google+</a></li>
+        </ul>
+
+      </div>
+    </footer>
+
+    <script src="../js/lib/jquery.js"></script>
+    <script src="../js/lib/input-plugin.js"></script>
+    <script src="../js/carrinho/ativa-filtro.js"></script>
+    <script src="../js/lib/angular.js"></script>
+    <script src="../js/modules/moeda.js"></script>
+    <script src="../js/controller/RecomendacaoController.js"></script>
+    <script src="../js/controller/ProdutoController.js"></script>
+  </body>
+</html>

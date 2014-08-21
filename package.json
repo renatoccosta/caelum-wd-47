@@ -1,0 +1,23 @@
+{
+  "name": "mirror-fashion",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-cli": "~0.1.13",
+    "grunt": "~0.4.5",
+    "grunt-usemin": "~2.3.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.10.0",
+    "grunt-contrib-uglify": "~0.5.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-connect": "~0.8.0"
+  }
+}
